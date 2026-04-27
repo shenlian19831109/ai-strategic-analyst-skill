@@ -1,17 +1,17 @@
-# AI 企业战略分析助手 Skill
+# AI 企业战略分析助手
 
-**版本**: 1.0.0  
+**版本**: 2.0.0  
 **作者**: Manus AI  
 **发布日期**: 2026-04-27  
 **许可证**: MIT
 
 ## 概述
 
-这是一个**企业战略深度分析 Skill**，基于 CrewAI 多智能体框架，能够为任何行业生成专业级的战略分析报告。该 Skill 通过多阶段推演（PESTEL → 价值链 → 竞争格局 → 波特五力），确保分析的逻辑严密性和数据透明度。
+这是一个**企业战略深度分析工具**，基于 CrewAI 多智能体框架，能够为任何行业生成专业级的战略分析报告。该工具通过多阶段推演（PESTEL → 价值链 → 竞争格局 → SWOT → BCG → 蓝海战略 → 波特五力），确保分析的逻辑严密性和数据透明度。
 
 ## 核心特性
 
-*   **五份结构化报告**：PESTEL 宏观分析、价值链拆解、竞争格局、波特五力推演、数据审计清单。
+*   **七份结构化报告**：PESTEL 宏观分析、价值链拆解、竞争格局、SWOT 深度分析、BCG 矩阵、蓝海战略、波特五力推演、数据审计清单。
 *   **白箱化数据处理**：完整展示数据采集量、清洗量、采纳量，以及所有原文链接。
 *   **灵活 LLM 适配**：支持 OpenAI、Groq (Llama 3)、Google Gemini，用户可自由选择。
 *   **免费 API 方案**：搜索默认使用 DuckDuckGo（完全免费），LLM 支持免费额度方案。
@@ -73,17 +73,20 @@ crew = StrategicCrew()
 # 执行分析
 result = crew.run(industry="中国商用低轨卫星互联网行业 - 面向大型能源企业的专线接入服务")
 
-# 输出五份报告
-print(result['pestel_report']['content'])
-print(result['value_chain_report']['content'])
-print(result['landscape_report']['content'])
-print(result['five_forces_report']['content'])
-print(result['audit_report']['content'])
+# 输出七份报告
+print(result["pestel_report"]["content"])
+print(result["value_chain_report"]["content"])
+print(result["landscape_report"]["content"])
+print(result["swot_report"]["content"])
+print(result["bcg_matrix_report"]["content"])
+print(result["blue_ocean_report"]["content"])
+print(result["five_forces_report"]["content"])
+print(result["audit_report"]["content"])
 ```
 
 ## 输出结构
 
-### 五份报告的完整输出
+### 七份报告的完整输出
 
 每份报告都遵循以下结构：
 
@@ -102,6 +105,9 @@ print(result['audit_report']['content'])
   },
   "value_chain_report": {...},
   "landscape_report": {...},
+  "swot_report": {...},
+  "bcg_matrix_report": {...},
+  "blue_ocean_report": {...},
   "five_forces_report": {...},
   "audit_report": {
     "total_searches": 42,
@@ -142,10 +148,10 @@ class SearchToolWrapper(BaseTool):
 ## 常见问题
 
 **Q: 分析需要多长时间？**  
-A: 通常 2-5 分钟，取决于行业复杂度和网络速度。
+A: 通常 3-8 分钟，取决于行业复杂度和网络速度。
 
 **Q: 可以离线使用吗？**  
-A: 不可以。该 Skill 需要网络连接以获取最新数据和调用 LLM API。
+A: 不可以。该工具需要网络连接以获取最新数据和调用 LLM API。
 
 **Q: 数据准确性如何保证？**  
 A: 通过三层 Agent 协同与数据审计机制。所有硬数据都附带来源链接，用户可自行验证。
@@ -160,4 +166,4 @@ MIT License - 详见 LICENSE 文件。
 
 ## 联系方式
 
-如有问题，请在 GitHub 上提交 Issue 或联系 Manus AI 团队。
+如有问题，请在 GitHub 上提交 Issue。
